@@ -36,6 +36,6 @@ function track() {
     updateClickCount('VA6B640NP9')   
     window.location.replace('https://prestonkwei.com/links.html')
   } else {
-    // window.location.href = 'https://prestonkwei.com';
+    window.location.href = 'https://prestonkwei.com';
   }
 }
