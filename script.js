@@ -35,6 +35,10 @@ function track() {
     database.ref('path/' + 'VA6B640NP9' + '/linkNickname').set('prestonkwei.com/links.html');
     updateClickCount('VA6B640NP9')   
     window.location.replace('https://prestonkwei.com/links.html')
+  } else if (linkid === 'food') {
+    database.ref('path/' + 'food' + '/linkNickname').set('prestonkwei.com/comingsoon.html');
+    updateClickCount('VA6B640NP9')   
+    window.location.replace('https://prestonkwei.com/links.html')
   } else {
     database.ref('path/' + 'FALLBACK' + '/linkNickname').set('null');
     updateClickCount('FALLBACK')   
