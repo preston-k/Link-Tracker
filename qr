@@ -6,6 +6,6 @@
     }
   </script>
   <body onload=load()>
-    <p>If you are not automatically redirected within 5 seconds, click <a href='https://prestonkwei.com/links.html'>here.</a></p>
+    <div id='qrdiv'></div>
   </body>
 </html>
