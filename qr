@@ -5,7 +5,8 @@
       window.location.replace('qr.html')
     }
   </script>
-  <body onload=load()>
+  <body>
+    <h3>Create a QR Code</h3>
     <div id='qrdiv'></div>
   </body>
 </html>
