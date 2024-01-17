@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <script>
+    function load() {
+      window.location.replace('qr.html')
+    }
+  </script>
+  <body onload=load()>
+    <p>If you are not automatically redirected within 5 seconds, click <a href='https://prestonkwei.com/links.html'>here.</a></p>
+  </body>
+</html>
