@@ -6,7 +6,6 @@
     }
   </script>
   <body>
-    <h3>Create a QR Code</h3>
-    <div id='qrdiv'></div>
+    
   </body>
 </html>

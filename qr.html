@@ -3,15 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Redirecting...</title>
+  <title>Create a QR Code</title>
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
   <link rel="icon" type="image/x-icon" href="https://cdn.prestonkwei.com/personalwebsitefavicon.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins">
   <link href="style.css" rel="stylesheet" type="text/css" />
-  <script src="qr.js"></script>
+  
 </head>
 <body>
-  
+  <h3>Create a QR Code</h3>
+  <form id='qrform'>
+    <input type='url' id='target' placeholder='Target URL'></input>
+    <div id="error"></div>
+  </form>
+  <div id='qrdiv'></div>
+  <!-- EOC -- DO NOT EDIT -->
+  <script src="qr.js"></script>
 </body>
 </html>

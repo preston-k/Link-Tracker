@@ -1,7 +1,32 @@
 body {
   background-color: black;
   color: white;
+  text-align: center;
 }
 a {
   color: #7EC8E3;
+}
+
+h3, h4 {
+  font-family: 'Poppins';
+  text-align: center;
+}
+input {
+  width: 50%;
+  background-color: black;
+  border-radius: 3px;
+  border: 2px solid white;
+  height: 50px;
+  font-family: Poppins;
+  text-align: center;
+  font-size: 24px;
+  color: white;
+}
+p {
+  font-family: Poppins;
+}
+#error {
+  font-family: Poppins;
+  margin-top: 3px;
+  color: red;
 }
