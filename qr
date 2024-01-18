@@ -5,7 +5,7 @@
       window.location.replace('qr.html')
     }
   </script>
-  <body>
+  <body onload='load()'>
     
   </body>
 </html>
