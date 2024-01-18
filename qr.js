@@ -29,7 +29,7 @@ document.getElementById('target').addEventListener('input', function() {
 let urlInput = document.querySelector('#target');
 
 urlInput.addEventListener("input", () => {
-  //
+  generateQR()
 });
 
 function generateQR() {
