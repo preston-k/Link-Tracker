@@ -14,6 +14,10 @@ let database = firebase.database();
 function init() {
   
 }
+let startId = self.crypto.randomUUID()
+console.log('sesid='+startId)
+document.getElementById('seshidhtml').innerHTML = 'Session ID: ' + startId
+
 document.getElementById('target').addEventListener('input', function() {
   var urlPattern = /^(https?:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i;
   var errorMsg = document.getElementById('error');
@@ -28,8 +32,14 @@ document.getElementById('target').addEventListener('input', function() {
 
 let urlInput = document.querySelector('#target');
 
+let urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
 urlInput.addEventListener("input", () => {
-  generateQR()
+  if (urlPattern.test(urlInput)) {
+    console.log('QR CODE')
+    generateQR()
+  } else {
+    console.log('NO QR CODE MADE')
+  }
 });
 
 function generateQR() {
