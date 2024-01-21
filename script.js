@@ -31,17 +31,25 @@ function updateClickCount(linkId) {
 
 function track() {
   console.log('Tracking Sequence Initiated');
-  if (linkid === 'VA6B640NP9') {
-    database.ref('path/' + 'VA6B640NP9' + '/linkNickname').set('prestonkwei.com/links.html');
-    updateClickCount('VA6B640NP9')   
-    window.location.replace('https://prestonkwei.com/links.html')
-  } else if (linkid === 'food') {
-    database.ref('path/' + 'food' + '/linkNickname').set('prestonkwei.com/comingsoon.html');
-    updateClickCount('VA6B640NP9')   
-    window.location.replace('https://prestonkwei.com/links.html')
-  } else {
-    database.ref('path/' + 'FALLBACK' + '/linkNickname').set('null');
-    updateClickCount('FALLBACK')   
-    window.location.href = 'https://prestonkwei.com';
+  if (linkid.length <= 35) {
+    console.log('RegEx with LinkTrack Detected')
+    if (linkid === 'VA6B640NP9') {
+      database.ref('path/' + 'VA6B640NP9' + '/linkNickname').set('prestonkwei.com/links.html');
+      updateClickCount('VA6B640NP9')   
+      // window.location.replace('https://prestonkwei.com/links.html') REMOVE LATER
+    } else if (linkid === 'food') {
+      database.ref('path/' + 'food' + '/linkNickname').set('prestonkwei.com/comingsoon.html');
+      updateClickCount('VA6B640NP9')   
+      // window.location.replace('https://prestonkwei.com/links.html') REMOVE LATER
+    } else {
+      database.ref('path/' + 'FALLBACK' + '/linkNickname').set('null');
+      updateClickCount('FALLBACK')   
+      // window.location.href = 'https://prestonkwei.com'; REMOVE LATER
+    }
+  } else if (linkid.length == 36) {
+    console.log('QR Code Detected')
+    console.log('LinkID= ' + linkid)
   }
+  // QR CODE CHECK SEQUENCE
+  
 }
