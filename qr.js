@@ -41,8 +41,9 @@ urlInput.addEventListener("input", () => {
     console.log('NO QR CODE MADE')
   }
 });
-
+let urlid = 'https://go.prestonkwei.com/?id=' + startId 
 function generateQR() {
-  let qrImageUrl = `https://chart.googleapis.com/chart?cht=qr&chl=${encodeURIComponent(urlInput.value)}&chs=160x160&chld=L|0`;
-  document.getElementById('qrdiv').innerHTML = `<img src='${qrImageUrl}' alt='QR Code'>`;
+  let qrImageUrl = `https://chart.googleapis.com/chart?cht=qr&chl=${encodeURIComponent(urlid)}&chs=160x160&chld=L|0`;
+  document.getElementById('qrdiv').innerHTML = `<img id='htmlqr' src='${qrImageUrl}' alt='QR Code'>`;
+  document.getElementById('uuidlinkdiv').innerHTML = `<p>You can also share this URL: <a target='blank_' href='${urlid}'>${urlid}</a>.</p>`;
 }

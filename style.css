@@ -35,3 +35,9 @@ p {
   position: absolute;
   bottom: 0;
 }
+#htmlqr {
+  height: 25%;
+  width: 25%;
+  max-width: 200px;
+  max-height: 200px;
+}
