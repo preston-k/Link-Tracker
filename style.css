@@ -38,6 +38,6 @@ p {
 #htmlqr {
   height: 25%;
   width: 25%;
-  max-width: 350px;
-  max-height: 350px;
+  max-width: 250px;
+  max-height: 250px;
 }
