@@ -17,6 +17,12 @@ function updateDb(userPath, userKey, userValue) {
   firebase.database().ref(userPath).update(updateObject);
 }
 
+function addDb(path, key, value) {
+  let updates = {};
+  updates[key] = value;
+  firebase.database().ref(path).update(updates);
+}
+
 let startId = self.crypto.randomUUID();
 console.log('sesid=' + startId);
 document.getElementById('seshidhtml').innerHTML = 'Session ID: ' + startId + ' · LinkTrack · Version 1.2.0';
@@ -34,12 +40,13 @@ document.getElementById('target').addEventListener('input', function() {
     generateQR();
   }
 });
-
+let curTime = Date()
 let urlid = 'https://go.prestonkwei.com/?id=' + startId;
 function generateQR() {
   let value = document.querySelector('#target').value
   console.log(value)
   updateDb(startId, 'redirectTo', value)
+  addDb(startId, 'timestamp', curTime)
   let qrImageUrl = `https://chart.googleapis.com/chart?cht=qr&chl=${encodeURIComponent(urlid)}&chs=160x160&chld=L|0`;
   document.getElementById('qrdiv').innerHTML = `<img id='htmlqr' src='${qrImageUrl}' alt='QR Code'>`;
   document.getElementById('uuidlinkdiv').innerHTML = `<p>You can also share this URL: <a target='blank_' href='${urlid}'>${urlid}</a>.</p>`;
