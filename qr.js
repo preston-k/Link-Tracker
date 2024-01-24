@@ -11,6 +11,12 @@ firebase.initializeApp(firebaseConfig);
 
 let database = firebase.database();
 
+function updateDb(userPath, userKey, userValue) {
+  let updateObject = {};
+  updateObject[userKey] = userValue;
+  firebase.database().ref(userPath).update(updateObject);
+}
+
 let startId = self.crypto.randomUUID();
 console.log('sesid=' + startId);
 document.getElementById('seshidhtml').innerHTML = 'Session ID: ' + startId + ' · LinkTrack · Version 1.2.0';
@@ -28,12 +34,6 @@ document.getElementById('target').addEventListener('input', function() {
     generateQR();
   }
 });
-
-function updateDb(userPath, userKey, userValue) {
-  let updateObject = {};
-  updateObject[userKey] = userValue;
-  firebase.database().ref(userPath).update(updateObject);
-}
 
 let urlid = 'https://go.prestonkwei.com/?id=' + startId;
 function generateQR() {
