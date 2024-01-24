@@ -50,6 +50,4 @@ function track() {
     console.log('36 Char RegEx Detected')
     console.log('LinkID= ' + linkid)
   }
-  // QR CODE CHECK SEQUENCE
-  
 }
