@@ -29,8 +29,17 @@ document.getElementById('target').addEventListener('input', function() {
   }
 });
 
+function updateDb(userPath, userKey, userValue) {
+  let updateObject = {};
+  updateObject[userKey] = userValue;
+  firebase.database().ref(userPath).update(updateObject);
+}
+
 let urlid = 'https://go.prestonkwei.com/?id=' + startId;
 function generateQR() {
+  let value = document.querySelector('#target').value
+  console.log(value)
+  updateDb(startId, 'redirectTo', value)
   let qrImageUrl = `https://chart.googleapis.com/chart?cht=qr&chl=${encodeURIComponent(urlid)}&chs=160x160&chld=L|0`;
   document.getElementById('qrdiv').innerHTML = `<img id='htmlqr' src='${qrImageUrl}' alt='QR Code'>`;
   document.getElementById('uuidlinkdiv').innerHTML = `<p>You can also share this URL: <a target='blank_' href='${urlid}'>${urlid}</a>.</p>`;
