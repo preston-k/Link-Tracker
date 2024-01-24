@@ -13,7 +13,7 @@ let database = firebase.database();
 
 let startId = self.crypto.randomUUID();
 console.log('sesid=' + startId);
-document.getElementById('seshidhtml').innerHTML = 'Session ID: ' + startId + ' · LinkTrack · Version 1.0.0 BETA';
+document.getElementById('seshidhtml').innerHTML = 'Session ID: ' + startId + ' · LinkTrack · Version 1.2.0 BETA';
 
 let urlPattern = /^(https?:\/\/)?([A-Za-z0-9]+\.)+[A-Za-z]{2,}$/;
 document.getElementById('target').addEventListener('input', function() {
