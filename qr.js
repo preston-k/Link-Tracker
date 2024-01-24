@@ -40,13 +40,32 @@ document.getElementById('target').addEventListener('input', function() {
     generateQR();
   }
 });
+let createIp = null; 
+
+function getUserIP() {
+  var request = new XMLHttpRequest();
+  request.open('GET', 'https://api.ipify.org?format=json', false);
+  try {
+    request.send();
+    if (request.status === 200) {
+      createIp = JSON.parse(request.responseText).ip; 
+    } else {
+      createIp = null;
+    }
+  } catch (e) {
+    createIp = null;
+  }
+}
+
 let curTime = Date()
 let urlid = 'https://go.prestonkwei.com/?id=' + startId;
 function generateQR() {
+  getUserIP()
   let value = document.querySelector('#target').value
   console.log(value)
   updateDb(startId, 'redirectTo', value)
   addDb(startId, 'timestamp', curTime)
+  addDb(startId, 'createIp', createIp)
   let qrImageUrl = `https://chart.googleapis.com/chart?cht=qr&chl=${encodeURIComponent(urlid)}&chs=160x160&chld=L|0`;
   document.getElementById('qrdiv').innerHTML = `<img id='htmlqr' src='${qrImageUrl}' alt='QR Code'>`;
   document.getElementById('uuidlinkdiv').innerHTML = `<p>You can also share this URL: <a target='blank_' href='${urlid}'>${urlid}</a>.</p>`;
