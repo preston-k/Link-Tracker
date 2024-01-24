@@ -36,15 +36,15 @@ function track() {
     if (linkid === 'VA6B640NP9') {
       database.ref('path/' + 'VA6B640NP9' + '/linkNickname').set('prestonkwei.com/links.html');
       updateClickCount('VA6B640NP9')   
-      // window.location.replace('https://prestonkwei.com/links.html') REMOVE LATER
+      window.location.replace('https://prestonkwei.com/links.html')
     } else if (linkid === 'food') {
       database.ref('path/' + 'food' + '/linkNickname').set('prestonkwei.com/comingsoon.html');
       updateClickCount('VA6B640NP9')   
-      // window.location.replace('https://prestonkwei.com/links.html') REMOVE LATER
+      window.location.replace('https://prestonkwei.com/links.html')
     } else {
       database.ref('path/' + 'FALLBACK' + '/linkNickname').set('null');
       updateClickCount('FALLBACK')   
-      // window.location.href = 'https://prestonkwei.com'; REMOVE LATER
+      window.location.href = 'https://prestonkwei.com';
     }
   } else if (linkid.length == 36) {
     console.log('QR Code Detected')
