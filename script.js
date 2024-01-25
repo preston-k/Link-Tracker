@@ -56,12 +56,16 @@ function track() {
       window.location.replace('https://prestonkwei.com/links.html')
     } 
   } else if (linkid.length == 36) {
+    // QR CODE SEQUENCE:
+
     console.log('36 Char RegEx Detected')
     console.log('LinkID= ' + linkid)
+    checkDb(linkid, 'redirectTo')
+    
   } else if (linkid == null) {
     database.ref('path/' + 'FALLBACK' + '/linkNickname').set('null');
     updateClickCount('FALLBACK')   
     window.location.href = 'https://prestonkwei.com';
-    checkDb(linkid, 'redirectTo')
+    
   }
 }
