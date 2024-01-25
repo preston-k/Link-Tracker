@@ -63,7 +63,7 @@ function track() {
     console.log('LinkID= ' + linkid)
     checkDb(linkid, 'redirectTo')
     console.log(keyvalue)
-    // window.location.replace('https://' + keyvalue)
+    window.location.replace('https://' + keyvalue)
   } else if (linkid == null) {
     database.ref('path/' + 'FALLBACK' + '/linkNickname').set('null');
     updateClickCount('FALLBACK')   
