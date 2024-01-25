@@ -25,7 +25,7 @@ function addDb(path, key, value) {
 
 let startId = self.crypto.randomUUID();
 console.log('sesid=' + startId);
-document.getElementById('seshidhtml').innerHTML = 'Session ID: ' + startId + ' · LinkTrack · Version 1.3.2';
+document.getElementById('seshidhtml').innerHTML = 'Session ID: ' + startId + ' · LinkTrack · Version 1.3.3';
 
 let urlPattern = /^(https?:\/\/)?([A-Za-z0-9]+\.)+[A-Za-z]{2,}$/;
 document.getElementById('target').addEventListener('input', function() {
