@@ -33,10 +33,8 @@ document.getElementById('target').addEventListener('input', function() {
   
   if (this.value && !urlPattern.test(this.value)) {
     errorMsg.innerHTML = 'Must be a valid URL';
-    console.log('NO QR CODE MADE');
   } else {
     errorMsg.innerHTML = '';
-    console.log('QR CODE');
     generateQR();
   }
 });
