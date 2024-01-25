@@ -56,7 +56,7 @@ function track() {
     } else if (linkid === 'food') {
       database.ref('path/' + 'food' + '/linkNickname').set('prestonkwei.com/comingsoon.html');
       updateClickCount('VA6B640NP9')   
-      window.location.replace('https://prestonkwei.com/links.html')
+      // window.location.replace('https://prestonkwei.com/links.html')
     } 
   } else if (linkid.length == 36) {
     // QR CODE SEQUENCE:
