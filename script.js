@@ -61,7 +61,7 @@ function track() {
     console.log('36 Char RegEx Detected')
     console.log('LinkID= ' + linkid)
     let redirection = checkDb(linkid, 'redirectTo')
-    window.location.href(redirection)
+    window.location.replace(redirection)
   } else if (linkid == null) {
     database.ref('path/' + 'FALLBACK' + '/linkNickname').set('null');
     updateClickCount('FALLBACK')   
