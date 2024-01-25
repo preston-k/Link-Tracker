@@ -28,11 +28,12 @@ function updateClickCount(linkId) {
     console.error('Error reading click count: ', error);
   });
 }
+let keyvalue = null
 function checkDb(path, key) {
   firebase.database().ref(path).once('value').then((snapshot) => {
     if (snapshot.exists()) {
       let data = snapshot.val()
-      let keyValue = data[key]
+      keyValue = data[key]
       console.log(keyValue)
     } else {
       console.log('No data available at path:', path)
@@ -60,8 +61,8 @@ function track() {
 
     console.log('36 Char RegEx Detected')
     console.log('LinkID= ' + linkid)
-    let redirection = checkDb(linkid, 'redirectTo')
-    window.location.replace('https://' + redirection)
+    checkDb(linkid, 'redirectTo')
+    window.location.replace('https://' + keyvalue)
   } else if (linkid == null) {
     database.ref('path/' + 'FALLBACK' + '/linkNickname').set('null');
     updateClickCount('FALLBACK')   
