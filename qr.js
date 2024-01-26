@@ -63,7 +63,7 @@ function getUserIP() {
 function init() {
   console.log('LinkTrack (go.prestonkwei.com)')
   console.log(data)
-  console.log('userIp: '+ getUserIp)
+  console.log('userIp: '+ createIp)
 }
 init()
 let curTime = Date()
