@@ -1,3 +1,8 @@
+/** @type {typeof import("./static.json")} */
+const data = await fetch("/static.json").then(x=>x.json());
+
+const version = data.version
+
 const firebaseConfig = {
   apiKey: "AIzaSyCv6apHJVxUphcDWr2ga5ip4Mk1v72nB4s",
   authDomain: "link-track-2a944.firebaseapp.com",
@@ -73,3 +78,5 @@ function track() {
     
   }
 }
+
+export {}

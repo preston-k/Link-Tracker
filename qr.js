@@ -1,3 +1,8 @@
+/** @type {typeof import("./static.json")} */
+const data = await fetch("/static.json").then(x=>x.json());
+
+let version = data.version
+
 const firebaseConfig = {
   apiKey: "AIzaSyCv6apHJVxUphcDWr2ga5ip4Mk1v72nB4s",
   authDomain: "link-track-2a944.firebaseapp.com",
@@ -25,7 +30,7 @@ function addDb(path, key, value) {
 
 let startId = self.crypto.randomUUID();
 console.log('sesid=' + startId);
-document.getElementById('seshidhtml').innerHTML = 'Session ID: ' + startId + ' · LinkTrack · Version 1.3.6';
+document.getElementById('seshidhtml').innerHTML = 'Session ID: ' + startId + ' · LinkTrack · Version ' + version;
 
 let urlPattern = /^(https?:\/\/)?([A-Za-z0-9]+\.)+[A-Za-z]{2,}$/;
 document.getElementById('target').addEventListener('input', function() {
@@ -68,3 +73,5 @@ function generateQR() {
   document.getElementById('qrdiv').innerHTML = `<img id='htmlqr' src='${qrImageUrl}' alt='QR Code'>`;
   document.getElementById('uuidlinkdiv').innerHTML = `<p>You can also share this URL: <a target='blank_' href='${urlid}'>${urlid}</a>.</p>`;
 }
+
+export {}
