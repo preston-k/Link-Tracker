@@ -3,6 +3,7 @@ const data = await fetch("/static.json").then(x=>x.json());
 
 const version = data.version
 function init() {
+  console.log('LinkTrack (go.prestonkwei.com)')
   console.log(data)
 }
 init()
