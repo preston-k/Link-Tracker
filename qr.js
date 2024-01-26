@@ -2,11 +2,7 @@
 const data = await fetch("/static.json").then(x=>x.json());
 
 let version = data.version
-function init() {
-  console.log('LinkTrack (go.prestonkwei.com)')
-  console.log(data)
-}
-init()
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCv6apHJVxUphcDWr2ga5ip4Mk1v72nB4s",
@@ -16,7 +12,7 @@ const firebaseConfig = {
   storageBucket: "link-track-2a944.appspot.com",
   messagingSenderId: "1067163047529",
   appId: "1:1067163047529:web:79f3892f00e8e5e95974f8"
-};
+}
 firebase.initializeApp(firebaseConfig);
 
 let database = firebase.database();
@@ -64,7 +60,12 @@ function getUserIP() {
     createIp = null;
   }
 }
-
+function init() {
+  console.log('LinkTrack (go.prestonkwei.com)')
+  console.log(data)
+  console.log('userIp: '+ getUserIp)
+}
+init()
 let curTime = Date()
 let urlid = 'https://go.prestonkwei.com/?id=' + startId;
 function generateQR() {
