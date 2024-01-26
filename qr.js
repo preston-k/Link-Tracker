@@ -2,7 +2,10 @@
 const data = await fetch("/static.json").then(x=>x.json());
 
 let version = data.version
-
+function init() {
+  console.log(data)
+}
+init()
 const firebaseConfig = {
   apiKey: "AIzaSyCv6apHJVxUphcDWr2ga5ip4Mk1v72nB4s",
   authDomain: "link-track-2a944.firebaseapp.com",
