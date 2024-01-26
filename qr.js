@@ -7,6 +7,24 @@ function init() {
   console.log(data)
 }
 init()
+
+async function getLocation(ip) {
+  try {
+    const response = await fetch(`http://ip-api.com/json/${ip}`);
+    const data = await response.json();
+    if (data.status === 'success') {
+      console.log('Location data:', data);
+      let locationText = `Your location is: ${data.city}, ${data.regionName}, ${data.country}`;
+      document.querySelector('#userloc').innerHTML = locationText;
+    } else {
+      console.log('Location not found for IP:', ip);
+      document.querySelector('#userloc').innerHTML = 'Location not found';
+    }
+  } catch (error) {
+    console.error('Error fetching location:', error);
+    document.querySelector('#userloc').innerHTML = 'Error fetching location';
+  }
+}
 const firebaseConfig = {
   apiKey: "AIzaSyCv6apHJVxUphcDWr2ga5ip4Mk1v72nB4s",
   authDomain: "link-track-2a944.firebaseapp.com",
@@ -73,6 +91,8 @@ function generateQR() {
   updateDb(startId, 'redirectTo', value)
   addDb(startId, 'timestamp', curTime)
   addDb(startId, 'createIp', createIp)
+  let loc = getLocation(createIp)
+  console.log(loc)
   let qrImageUrl = `https://chart.googleapis.com/chart?cht=qr&chl=${encodeURIComponent(urlid)}&chs=160x160&chld=L|0`;
   document.getElementById('qrdiv').innerHTML = `<img id='htmlqr' src='${qrImageUrl}' alt='QR Code'>`;
   document.getElementById('uuidlinkdiv').innerHTML = `<p>You can also share this URL: <a target='blank_' href='${urlid}'>${urlid}</a>.</p>`;
