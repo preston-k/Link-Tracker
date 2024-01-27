@@ -2,8 +2,23 @@
 const data = await fetch("/static.json").then(x=>x.json());
 
 let version = data.version
-
-
+// ENCRYPTION START
+let passPhrase = data.key;
+console.log(passPhrase);
+//
+function encrypt(dataToEncrypt) {
+  const passphrase = passPhrase;
+  const encrypted = CryptoJS.AES.encrypt(dataToEncrypt, passphrase).toString();
+  return encrypted;
+  console.log(encrypted)
+}
+function decrypt(apiKeyEncrypted) {
+  const passphrase = passPhrase;
+  const bytes = CryptoJS.AES.decrypt(apiKeyEncrypted, passphrase);
+  const originalText = bytes.toString(CryptoJS.enc.Utf8);
+  return originalText;
+}
+// ENCRYPTION END
 const firebaseConfig = {
   apiKey: "AIzaSyCv6apHJVxUphcDWr2ga5ip4Mk1v72nB4s",
   authDomain: "link-track-2a944.firebaseapp.com",
@@ -81,3 +96,5 @@ function generateQR() {
 }
 
 export {}
+
+// ENCRYPTION STUFF
