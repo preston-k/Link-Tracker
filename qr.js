@@ -4,7 +4,6 @@ const data = await fetch("/static.json").then(x=>x.json());
 let version = data.version
 // ENCRYPTION START
 let passPhrase = data.key;
-console.log(passPhrase);
 //
 function encrypt(dataToEncrypt) {
   const passphrase = passPhrase;
@@ -18,15 +17,23 @@ function decrypt(apiKeyEncrypted) {
   const originalText = bytes.toString(CryptoJS.enc.Utf8);
   return originalText;
 }
+
+let aKey = decrypt('U2FsdGVkX19AdMXYimq+xA3o8rvbXSm0KRXPglcaP1l66JO9ZSqyA02jbxuLPnIC72iX+aEKCcOrjCKy018oOg==')
+let aDomain = decrypt('U2FsdGVkX18pdCfYp6uooED7HgOJDJAw/KJ4yoO+4ts1iqHcTeVeTOiQo1TuadUADY1ikrUXVLOf2tXdqObJZQ==')
+let dbUrl = decrypt('U2FsdGVkX1/e9GtMh+DAc8oTFCnLjwdBLo/YMWbzEay05BZ8Qf5S0Cd42YleAQIvgHepeFLyofQQa5QJ8kN9r1N0s5f0ynIJNnn0ggiCajs=')
+let pId = decrypt('U2FsdGVkX1+JHmLCS3aCe6kbrFeYrz5LuhHwMYs7IKxgHhforG4Sa+lDZMqNFxNx')
+let sBucket = decrypt('U2FsdGVkX1+ATuzFjMt6/VCzsvlfkNWmrIev3yQ29VouWODW2h2DtKy2eOFxzJKE')
+let mSId = decrypt('U2FsdGVkX19D3zs5skhCkqR9sTNqs96ta0XiajXzfR0=')
+let aId = decrypt('U2FsdGVkX1+DgFNMG9/Nk7we/5XcSQU1JAoyhj4eoQc=')
 // ENCRYPTION END
 const firebaseConfig = {
-  apiKey: "AIzaSyCv6apHJVxUphcDWr2ga5ip4Mk1v72nB4s",
-  authDomain: "link-track-2a944.firebaseapp.com",
-  databaseURL: "https://link-track-2a944-default-rtdb.firebaseio.com",
-  projectId: "link-track-2a944",
-  storageBucket: "link-track-2a944.appspot.com",
-  messagingSenderId: "1067163047529",
-  appId: "1:1067163047529:web:79f3892f00e8e5e95974f8"
+  apiKey: aKey,
+  authDomain: aDomain,
+  databaseURL: dbUrl,
+  projectId: pId,
+  storageBucket: sBucket,
+  messagingSenderId: mSId,
+  appId: aId
 }
 firebase.initializeApp(firebaseConfig);
 
