@@ -55,6 +55,8 @@ document.getElementById('target').addEventListener('input', function() {
   
   if (this.value && !urlPattern.test(this.value)) {
     errorMsg.innerHTML = 'Must be a valid URL';
+  } else if (value == null) {
+    console.log('Blank')
   } else {
     errorMsg.innerHTML = '';
     generateQR();
