@@ -59,11 +59,11 @@ function track() {
   if (linkid != null && linkid.length <= 35) {
     console.log('RegEx with LinkTrack Detected')
     if (linkid === 'VA6B640NP9') {
-      database.ref('path/' + 'VA6B640NP9' + '/linkNickname').set('prestonkwei.com/links.html');
+      database.ref('path/' + 'VA6B640NP9' + '/linkNickname').set('prestonkwei.com/links.html')
       updateClickCount('VA6B640NP9')   
       window.location.replace('https://prestonkwei.com/links.html')
     } else if (linkid === 'food') {
-      database.ref('path/' + 'food' + '/linkNickname').set('prestonkwei.com/comingsoon.html');
+      database.ref('path/' + 'food' + '/linkNickname').set('prestonkwei.com/comingsoon.html')
       updateClickCount('VA6B640NP9')   
       // window.location.replace('https://prestonkwei.com/links.html')
     } 
@@ -75,7 +75,7 @@ function track() {
     checkDb(linkid, 'redirectTo')
     console.log(redirection)
     window.location.replace('https://' + redirection)
-  } else if (linkid == null) {
+  } else {
     database.ref('path/' + 'FALLBACK' + '/linkNickname').set('null');
     updateClickCount('FALLBACK')   
     window.location.href = 'https://prestonkwei.com';
