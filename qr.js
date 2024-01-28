@@ -27,7 +27,7 @@ let mSId = decrypt('U2FsdGVkX19D3zs5skhCkqR9sTNqs96ta0XiajXzfR0=')
 let aId = decrypt('U2FsdGVkX1+DgFNMG9/Nk7we/5XcSQU1JAoyhj4eoQc=')
 // ENCRYPTION END
 const firebaseConfig = {
-  apiKey: aKey,
+  apiKey: 'U2FsdGVkX19AdMXYimq+xA3o8rvbXSm0KRXPglcaP1l66JO9ZSqyA02jbxuLPnIC72iX+aEKCcOrjCKy018oOg==',
   authDomain: aDomain,
   databaseURL: dbUrl,
   projectId: pId,
