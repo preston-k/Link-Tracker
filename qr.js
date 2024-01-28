@@ -103,5 +103,3 @@ function generateQR() {
 }
 
 export {}
-
-// ENCRYPTION STUFF
