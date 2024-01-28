@@ -39,12 +39,6 @@ firebase.initializeApp(firebaseConfig);
 
 let database = firebase.database();
 
-function updateDb(userPath, userKey, userValue) {
-  let updateObject = {};
-  updateObject[userKey] = userValue;
-  firebase.database().ref(userPath).update(updateObject);
-}
-
 function addDb(path, key, value) {
   let updates = {};
   updates[key] = value;
@@ -94,7 +88,7 @@ function generateQR() {
   getUserIP()
   let value = document.querySelector('#target').value
   console.log(value)
-  updateDb(startId, 'redirectTo', value)
+  addDb(startId, 'redirectTo', value)
   addDb(startId, 'timestamp', curTime)
   addDb(startId, 'createIp', createIp)
   let qrImageUrl = `https://chart.googleapis.com/chart?cht=qr&chl=${encodeURIComponent(urlid)}&chs=160x160&chld=L|0`;
