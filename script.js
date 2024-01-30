@@ -27,7 +27,8 @@ function updateClickCount(linkId) {
   clickCountRef.once('value', function(snapshot) {
     let clickCount = snapshot.val();
     if (clickCount !== null) {
-      console.log('clickCount for ' + linkId + ': ' + clickCount);
+      let updated = clickCount+1
+      console.log('clickCount for ' + linkId + ': ' + updated);
       clickCountRef.set(clickCount += 1);
     } else {
       console.log('clickCount for ' + linkId + ' is not set.');
@@ -37,44 +38,43 @@ function updateClickCount(linkId) {
     console.error('Error reading click count: ', error);
   });
 }
-let keyvalue = null
+let keyValue = null
 let redirection = null
-function checkDb(path, key) {
-  firebase.database().ref(path).once('value').then((snapshot) => {
-    if (snapshot.exists()) {
-      let data = snapshot.val()
-      keyValue = data[key]
-      redirection = keyvalue
-      console.log(keyValue)
-    } else {
-      console.log('No data available at path:', path)
-    }
-  }).catch((error) => {
-    console.error(error);
-  });
-}
+async function checkDb(path, key) {
+  const snapshot = await firebase.database().ref(path).once('value');
 
-function track() {
+  if (snapshot.exists()) {
+    let data = snapshot.val()
+    keyValue = data[key]
+    redirection = keyValue
+    console.log(keyValue)
+    return keyValue
+  } else {
+    // ADD A MODAL HERE THAT ALSO RELOADS THE PAGE
+    console.log('No data available at path:', path)
+  }
+}
+console.log(keyValue)
+async function track() {
   console.log('Tracking Sequence Initiated');
   if (linkid != null && linkid.length <= 35) {
     console.log('RegEx with LinkTrack Detected')
     if (linkid === 'VA6B640NP9') {
       database.ref('path/' + 'VA6B640NP9' + '/linkNickname').set('prestonkwei.com/links.html')
       updateClickCount('VA6B640NP9')   
-      // window.location.replace('https://prestonkwei.com/links.html')
+      window.location.replace('https://prestonkwei.com/links.html')
     } else if (linkid === 'food') {
       database.ref('path/' + 'food' + '/linkNickname').set('prestonkwei.com/comingsoon.html')
       updateClickCount('VA6B640NP9')   
-      // window.location.replace('https://prestonkwei.com/links.html')
+      window.location.replace('https://prestonkwei.com/links.html')
     } 
-  } else if (linkid.length == 36) {
+  } else if (linkid.length > 35) {
     // QR CODE SEQUENCE:
-
-    console.log('36 Char RegEx Detected')
-    console.log('LinkID= ' + linkid)
-    checkDb(linkid, 'redirectTo')
-    console.log(redirection)
-    // window.location.replace('https://' + redirection)
+    let identifier = linkid//.slice(3)
+    console.log('LinkID= ' + identifier)
+    let db = await checkDb(identifier, 'redirectTo')
+    console.log('https://' + db)
+    window.location.replace('https://' + db)
   } else {
     database.ref('path/' + 'FALLBACK' + '/linkNickname').set('null');
     updateClickCount('FALLBACK')   
