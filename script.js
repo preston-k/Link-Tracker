@@ -83,4 +83,6 @@ function track() {
   }
 }
 
+track()
+
 export {}
