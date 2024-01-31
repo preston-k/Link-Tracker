@@ -64,6 +64,7 @@ console.log(keyValue)
 async function track() {
   console.log('Tracking Sequence Initiated');
   if (keyValue = null) {
+    modal()
     if (linkid != null && linkid.length <= 35) {
       console.log('RegEx with LinkTrack Detected')
       if (linkid === 'VA6B640NP9') {
