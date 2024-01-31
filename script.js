@@ -63,34 +63,36 @@ async function checkDb(path, key) {
 console.log(keyValue)
 async function track() {
   console.log('Tracking Sequence Initiated');
-  if (linkid != null && linkid.length <= 35) {
-    console.log('RegEx with LinkTrack Detected')
-    if (linkid === 'VA6B640NP9') {
-      database.ref('path/' + 'VA6B640NP9' + '/linkNickname').set('prestonkwei.com/links.html')
-      updateClickCount('VA6B640NP9')   
-      window.location.replace('https://prestonkwei.com/links.html')
-    } else if (linkid === 'food') {
-      database.ref('path/' + 'food' + '/linkNickname').set('prestonkwei.com/comingsoon.html')
-      updateClickCount('VA6B640NP9')   
-      window.location.replace('https://prestonkwei.com/links.html')
-    } 
-  } else if (linkid != null && linkid.length > 35) {
-    // QR CODE SEQUENCE:
-    let identifier = linkid//.slice(3)
-    console.log('LinkID= ' + identifier)
-    let db = await checkDb(identifier, 'redirectTo')
-    if (db = null) {
-      modal()
-    } else {
-      console.log('https://' + db)
-      window.location.replace('https://' + db)
-    }
+  if (keyValue = null) {
+    if (linkid != null && linkid.length <= 35) {
+      console.log('RegEx with LinkTrack Detected')
+      if (linkid === 'VA6B640NP9') {
+        database.ref('path/' + 'VA6B640NP9' + '/linkNickname').set('prestonkwei.com/links.html')
+        updateClickCount('VA6B640NP9')   
+        window.location.replace('https://prestonkwei.com/links.html')
+      } else if (linkid === 'food') {
+        database.ref('path/' + 'food' + '/linkNickname').set('prestonkwei.com/comingsoon.html')
+        updateClickCount('VA6B640NP9')   
+        window.location.replace('https://prestonkwei.com/links.html')
+      } 
+    } else if (linkid != null && linkid.length > 35) {
+      // QR CODE SEQUENCE:
+      let identifier = linkid//.slice(3)
+      console.log('LinkID= ' + identifier)
+      let db = await checkDb(identifier, 'redirectTo')
+      if (db = null) {
+        modal()
+      } else {
+        console.log('https://' + db)
+        window.location.replace('https://' + db)
+      }
 
-  } else {
-    database.ref('path/' + 'FALLBACK' + '/linkNickname').set('null');
-    updateClickCount('FALLBACK')   
-    // window.location.href = 'https://prestonkwei.com';
-    
+    } else {
+      database.ref('path/' + 'FALLBACK' + '/linkNickname').set('null');
+      updateClickCount('FALLBACK')   
+      // window.location.href = 'https://prestonkwei.com';
+      
+    }
   }
 }
 
