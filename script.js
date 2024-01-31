@@ -63,7 +63,7 @@ async function checkDb(path, key) {
 console.log(keyValue)
 async function track() {
   console.log('Tracking Sequence Initiated');
-  if (keyValue = null) {
+  if (keyValue == null) {
     modal()
     if (linkid != null && linkid.length <= 35) {
       console.log('RegEx with LinkTrack Detected')
