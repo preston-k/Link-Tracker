@@ -97,3 +97,5 @@ function generateQR() {
 }
 
 export {}
+
+//ENCRYPTED API: U2FsdGVkX19AdMXYimq+xA3o8rvbXSm0KRXPglcaP1l66JO9ZSqyA02jbxuLPnIC72iX+aEKCcOrjCKy018oOg==

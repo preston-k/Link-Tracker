@@ -7,6 +7,12 @@ function init() {
   console.log(data)
 }
 init()
+function modal() {
+  let myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'), {
+    keyboard: false
+  });
+  myModal.show();
+}
 const firebaseConfig = {
   apiKey: "AIzaSyCv6apHJVxUphcDWr2ga5ip4Mk1v72nB4s",
   authDomain: "link-track-2a944.firebaseapp.com",
@@ -73,8 +79,13 @@ async function track() {
     let identifier = linkid//.slice(3)
     console.log('LinkID= ' + identifier)
     let db = await checkDb(identifier, 'redirectTo')
-    console.log('https://' + db)
-    window.location.replace('https://' + db)
+    if (db = null) {
+      modal()
+    } else {
+      console.log('https://' + db)
+      window.location.replace('https://' + db)
+    }
+
   } else {
     database.ref('path/' + 'FALLBACK' + '/linkNickname').set('null');
     updateClickCount('FALLBACK')   
@@ -82,6 +93,7 @@ async function track() {
     
   }
 }
+
 
 track()
 
