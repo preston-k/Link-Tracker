@@ -74,7 +74,7 @@ async function track() {
       updateClickCount('VA6B640NP9')   
       window.location.replace('https://prestonkwei.com/links.html')
     } 
-  } else if (linkid.length > 35) {
+  } else if (linkid != null && linkid.length > 35) {
     // QR CODE SEQUENCE:
     let identifier = linkid//.slice(3)
     console.log('LinkID= ' + identifier)
