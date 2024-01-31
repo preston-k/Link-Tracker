@@ -65,7 +65,7 @@ async function track() {
   console.log('Tracking Sequence Initiated');
   if (keyValue == null) {
     modal()
-    if (linkid != null && linkid.length <= 35) {
+    if (linkId.length <= 35) {
       console.log('RegEx with LinkTrack Detected')
       if (linkid === 'VA6B640NP9') {
         database.ref('path/' + 'VA6B640NP9' + '/linkNickname').set('prestonkwei.com/links.html')
@@ -76,7 +76,7 @@ async function track() {
         updateClickCount('VA6B640NP9')   
         window.location.replace('https://prestonkwei.com/links.html')
       } 
-    } else if (linkid != null && linkid.length > 35) {
+    } else if (linkid.length > 35) {
       // QR CODE SEQUENCE:
       let identifier = linkid//.slice(3)
       console.log('LinkID= ' + identifier)
