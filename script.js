@@ -75,7 +75,9 @@ async function track() {
         database.ref('path/' + 'food' + '/linkNickname').set('prestonkwei.com/comingsoon.html')
         updateClickCount('VA6B640NP9')   
         window.location.replace('https://prestonkwei.com/links.html')
-      } 
+      } else { // if it is under 35 chars and not any of these links
+        modal()
+      }
     } else if (linkid.length > 35) {
       // QR CODE SEQUENCE:
       let identifier = linkid//.slice(3)
@@ -87,7 +89,6 @@ async function track() {
         console.log('https://' + db)
         window.location.replace('https://' + db)
       }
-
     } else {
       database.ref('path/' + 'FALLBACK' + '/linkNickname').set('null');
       updateClickCount('FALLBACK')   
