@@ -44,8 +44,10 @@ function updateClickCount(linkId) {
     console.error('Error reading click count: ', error);
   });
 }
+let dbPath = ''
 let keyValue = null
 let redirection = null
+let pathValid = false
 async function checkDb(path, key) {
   const snapshot = await firebase.database().ref(path).once('value');
 
@@ -56,16 +58,20 @@ async function checkDb(path, key) {
     console.log(keyValue)
     return keyValue
   } else {
-    // ADD A MODAL HERE THAT ALSO RELOADS THE PAGE
-    console.log('No data available at path:', path)
+    modal()
+    dbPath = path
+    let pathValid = false
+    console.log('No data available at path:', dbPath)
   }
 }
+console.log(dbPath)
 console.log(keyValue)
 async function track() {
+  console.log(linkid)
   console.log('Tracking Sequence Initiated');
-  if (keyValue == null) {
-    modal()
-    if (linkId.length <= 35) {
+  if (linkid != null) {
+    // modal()
+    if (linkid.length <= 35) {
       console.log('RegEx with LinkTrack Detected')
       if (linkid === 'VA6B640NP9') {
         database.ref('path/' + 'VA6B640NP9' + '/linkNickname').set('prestonkwei.com/links.html')
@@ -81,9 +87,8 @@ async function track() {
     } else if (linkid.length > 35) {
       // QR CODE SEQUENCE:
       let identifier = linkid//.slice(3)
-      console.log('LinkID= ' + identifier)
       let db = await checkDb(identifier, 'redirectTo')
-      if (db = null) {
+      if (dbPath = null) {
         modal()
       } else {
         console.log('https://' + db)
@@ -95,8 +100,12 @@ async function track() {
       // window.location.href = 'https://prestonkwei.com';
       
     }
+  } else {
+    modal()
+    console.log('Null or Not Found')
   }
 }
+
 
 
 track()
