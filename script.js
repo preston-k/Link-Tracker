@@ -1,15 +1,17 @@
 /** @type {typeof import("./static.json")} */
-const data = await fetch("/static.json").then(x=>x.json());
+const data = await fetch("/static.json").then((x) => x.json());
 
-const version = data.version
+const version = data.version;
 function init() {
-  console.log('LinkTrack (go.prestonkwei.com)')
-  console.log(data)
+  console.log("LinkTrack (go.prestonkwei.com)");
+  console.log(data);
 }
-init()
+init();
 function modal() {
-  let myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'), {
-    keyboard: false
+  let insidep = document.getElementById("redirect");
+  insidep.style.display = "none";
+  let myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"), {
+    keyboard: false,
   });
   myModal.show();
 }
@@ -20,94 +22,100 @@ const firebaseConfig = {
   projectId: "link-track-2a944",
   storageBucket: "link-track-2a944.appspot.com",
   messagingSenderId: "1067163047529",
-  appId: "1:1067163047529:web:79f3892f00e8e5e95974f8"
+  appId: "1:1067163047529:web:79f3892f00e8e5e95974f8",
 };
 firebase.initializeApp(firebaseConfig);
 
 let database = firebase.database();
-let linkid = new URLSearchParams(window.location.search).get('id'); 
+let linkid = new URLSearchParams(window.location.search).get("id");
 
 function updateClickCount(linkId) {
-  let clickCountRef = database.ref('path/' + linkId + '/clickCount');
+  let clickCountRef = database.ref("path/" + linkId + "/clickCount");
 
-  clickCountRef.once('value', function(snapshot) {
-    let clickCount = snapshot.val();
-    if (clickCount !== null) {
-      let updated = clickCount+1
-      console.log('clickCount for ' + linkId + ': ' + updated);
-      clickCountRef.set(clickCount += 1);
-    } else {
-      console.log('clickCount for ' + linkId + ' is not set.');
-      clickCountRef.set(1);
+  clickCountRef.once(
+    "value",
+    function (snapshot) {
+      let clickCount = snapshot.val();
+      if (clickCount !== null) {
+        let updated = clickCount + 1;
+        console.log("clickCount for " + linkId + ": " + updated);
+        clickCountRef.set((clickCount += 1));
+      } else {
+        console.log("clickCount for " + linkId + " is not set.");
+        clickCountRef.set(1);
+      }
+    },
+    function (error) {
+      console.error("Error reading click count: ", error);
     }
-  }, function(error) {
-    console.error('Error reading click count: ', error);
-  });
+  );
 }
-let dbPath = ''
-let keyValue = null
-let redirection = null
-let pathValid = false
+let dbPath = "";
+let keyValue = null;
+let redirection = null;
+let pathValid = false;
 async function checkDb(path, key) {
-  const snapshot = await firebase.database().ref(path).once('value');
+  const snapshot = await firebase.database().ref(path).once("value");
 
   if (snapshot.exists()) {
-    let data = snapshot.val()
-    keyValue = data[key]
-    redirection = keyValue
-    console.log(keyValue)
-    return keyValue
+    let data = snapshot.val();
+    keyValue = data[key];
+    redirection = keyValue;
+    console.log(keyValue);
+    return keyValue;
   } else {
-    modal()
-    dbPath = path
-    let pathValid = false
-    console.log('No data available at path:', dbPath)
+    modal();
+    dbPath = path;
+    let pathValid = false;
+    console.log("No data available at path:", dbPath);
   }
 }
-console.log(dbPath)
-console.log(keyValue)
+console.log(dbPath);
+console.log(keyValue);
 async function track() {
-  console.log(linkid)
-  console.log('Tracking Sequence Initiated');
+  console.log(linkid);
+  console.log("Tracking Sequence Initiated");
   if (linkid != null) {
     // modal()
     if (linkid.length <= 35) {
-      console.log('RegEx with LinkTrack Detected')
-      if (linkid === 'VA6B640NP9') {
-        database.ref('path/' + 'VA6B640NP9' + '/linkNickname').set('prestonkwei.com/links.html')
-        updateClickCount('VA6B640NP9')   
-        window.location.replace('https://prestonkwei.com/links.html')
-      } else if (linkid === 'food') {
-        database.ref('path/' + 'food' + '/linkNickname').set('prestonkwei.com/comingsoon.html')
-        updateClickCount('VA6B640NP9')   
-        window.location.replace('https://prestonkwei.com/links.html')
-      } else { // if it is under 35 chars and not any of these links
-        modal()
+      console.log("RegEx with LinkTrack Detected");
+      if (linkid === "VA6B640NP9") {
+        database
+          .ref("path/" + "VA6B640NP9" + "/linkNickname")
+          .set("prestonkwei.com/links.html");
+        updateClickCount("VA6B640NP9");
+        window.location.replace("https://prestonkwei.com/links.html");
+      } else if (linkid === "food") {
+        database
+          .ref("path/" + "food" + "/linkNickname")
+          .set("prestonkwei.com/comingsoon.html");
+        updateClickCount("VA6B640NP9");
+        window.location.replace("https://prestonkwei.com/links.html");
+      } else {
+        // if it is under 35 chars and not any of these links
+        modal();
       }
     } else if (linkid.length > 35) {
       // QR CODE SEQUENCE:
-      let identifier = linkid//.slice(3)
-      let db = await checkDb(identifier, 'redirectTo')
-      if (dbPath = null) {
-        modal()
+      let identifier = linkid; //.slice(3)
+      let db = await checkDb(identifier, "redirectTo");
+      if ((dbPath = null)) {
+        modal();
       } else {
-        console.log('https://' + db)
-        window.location.replace('https://' + db)
+        console.log("https://" + db);
+        window.location.replace("https://" + db);
       }
     } else {
-      database.ref('path/' + 'FALLBACK' + '/linkNickname').set('null');
-      updateClickCount('FALLBACK')   
+      database.ref("path/" + "FALLBACK" + "/linkNickname").set("null");
+      updateClickCount("FALLBACK");
       // window.location.href = 'https://prestonkwei.com';
-      
     }
   } else {
-    modal()
-    console.log('Null or Not Found')
+    modal();
+    console.log("Null or Not Found");
   }
 }
 
+track();
 
-
-track()
-
-export {}
+export {};

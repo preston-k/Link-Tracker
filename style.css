@@ -4,11 +4,12 @@ body {
   text-align: center;
 }
 a {
-  color: #7EC8E3;
+  color: #7ec8e3;
 }
 
-h3, h4 {
-  font-family: 'Poppins';
+h3,
+h4 {
+  font-family: "Poppins";
   text-align: center;
 }
 input {
@@ -55,4 +56,14 @@ p {
 }
 #errorp {
   text-align: left;
+}
+.badfontlol {
+  text-align: left;
+  font-family: "Times New Roman", Times, serif;
+}
+#redirect {
+  font-family: "Times New Roman", Times, serif !important;
+  margin-left: 20px !important;
+  margin-top: 0px !important;
+  font-size: 14px !important;
 }
