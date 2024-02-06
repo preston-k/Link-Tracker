@@ -104,23 +104,19 @@ let urlid = "https://go.prestonkwei.com/?id=" + startId;
 function generateQR() {
   getUserIP();
   let value = document.querySelector("#target").value;
-  if (value != list) {
-    console.log(value);
-    addDb(startId, "redirectTo", value);
-    addDb(startId, "timestamp", curTime);
-    addDb(startId, "createIp", createIp);
-    let qrImageUrl = `https://chart.googleapis.com/chart?cht=qr&chl=${encodeURIComponent(
-      urlid
-    )}&chs=160x160&chld=L|0`;
-    document.getElementById(
-      "qrdiv"
-    ).innerHTML = `<img id='htmlqr' src='${qrImageUrl}' alt='QR Code'>`;
-    document.getElementById(
-      "uuidlinkdiv"
-    ).innerHTML = `<p>You can also share this URL: <a target='blank_' href='${urlid}'>${urlid}</a>.</p>`;
-  } else {
-    alert("You've submitted something that is against our content policy! If you believe this is a mistake, please contact us by emailing content@prestonkwei.com. Thank you!")
-  }
+  console.log(value);
+  addDb(startId, "redirectTo", value);
+  addDb(startId, "timestamp", curTime);
+  addDb(startId, "createIp", createIp);
+  let qrImageUrl = `https://chart.googleapis.com/chart?cht=qr&chl=${encodeURIComponent(
+    urlid
+  )}&chs=160x160&chld=L|0`;
+  document.getElementById(
+    "qrdiv"
+  ).innerHTML = `<img id='htmlqr' src='${qrImageUrl}' alt='QR Code'>`;
+  document.getElementById(
+    "uuidlinkdiv"
+  ).innerHTML = `<p>You can also share this URL: <a target='blank_' href='${urlid}'>${urlid}</a>.</p>`;
 }
 
 export {};

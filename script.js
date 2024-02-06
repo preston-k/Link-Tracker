@@ -105,7 +105,7 @@ async function track() {
         console.log("https://" + db);
         if (db.startsWith('https://') == true) {
           db = db.slice(8)
-          if (block.some(x => x.includes(db))) {
+          if (db.some(x => x.includes(block))) {
             alert('You may have clicked on a malicious link! Are you sure you want to go here?')
             window.location.replace("https://" + db);
           } else {
@@ -113,14 +113,14 @@ async function track() {
           }
         } else if (db.startsWith('http://') == true) {
           db = db.slice(7)
-          if (block.some(x => x.includes(db))) {
+          if (db.some(x => x.includes(block))) {
             alert('You may have clicked on a malicious link! Are you sure you want to go here?')
             window.location.replace("https://" + db);
           } else {
             window.location.replace("https://" + db);
           }
         } else {
-          if (block.some(x => x.includes(db))) {
+          if (db.some(x => x.includes(block))) {
             alert('You may have clicked on a malicious link! Are you sure you want to go here?')
             window.location.replace("https://" + db);
           } else {
