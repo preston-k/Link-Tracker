@@ -1,3 +1,5 @@
+
+
 /** @type {typeof import("./static.json")} */
 const data = await fetch("/static.json").then((x) => x.json());
 
@@ -105,7 +107,7 @@ async function track() {
         console.log("https://" + db);
         if (db.startsWith('https://') == true) {
           db = db.slice(8)
-          if (db.some(x => x.includes(block))) {
+          if (block.some(x => db.includes(x))) {
             alert('You may have clicked on a malicious link! Are you sure you want to go here?')
             window.location.replace("https://" + db);
           } else {
@@ -113,14 +115,14 @@ async function track() {
           }
         } else if (db.startsWith('http://') == true) {
           db = db.slice(7)
-          if (db.some(x => x.includes(block))) {
+          if (block.some(x => db.includes(x))) {
             alert('You may have clicked on a malicious link! Are you sure you want to go here?')
             window.location.replace("https://" + db);
           } else {
             window.location.replace("https://" + db);
           }
         } else {
-          if (db.some(x => x.includes(block))) {
+          if (block.some(x => db.includes(x))) {
             alert('You may have clicked on a malicious link! Are you sure you want to go here?')
             window.location.replace("https://" + db);
           } else {
