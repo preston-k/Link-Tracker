@@ -73,7 +73,9 @@ async function checkDb(path, key) {
     console.log("No data available at path:", dbPath);
   }
 }
-
+function redirect() {
+  window.confirm('You may have clicked on a malicious link! Are you sure you want to go here?\n\nThis link will redirect you to: '+db)
+}
 console.log(dbPath);
 async function track() {
   console.log("Tracking Sequence Initiated");
@@ -108,7 +110,7 @@ async function track() {
         if (db.startsWith('https://') == true) {
           db = db.slice(8)
           if (block.some(x => db.includes(x))) {
-            alert('You may have clicked on a malicious link! Are you sure you want to go here?')
+            alert('You may have clicked on a malicious link! Are you sure you want to go here?\n\nThis link will redirect you to: '+db)
             window.location.replace("https://" + db);
           } else {
             window.location.replace("https://" + db);
@@ -116,14 +118,14 @@ async function track() {
         } else if (db.startsWith('http://') == true) {
           db = db.slice(7)
           if (block.some(x => db.includes(x))) {
-            alert('You may have clicked on a malicious link! Are you sure you want to go here?')
+            alert('You may have clicked on a malicious link! Are you sure you want to go here?\n\nThis link will redirect you to: '+db)
             window.location.replace("https://" + db);
           } else {
             window.location.replace("https://" + db);
           }
         } else {
           if (block.some(x => db.includes(x))) {
-            alert('You may have clicked on a malicious link! Are you sure you want to go here?')
+            alert('You may have clicked on a malicious link! Are you sure you want to go here?\n\nThis link will redirect you to: '+db)
             window.location.replace("https://" + db);
           } else {
             window.location.replace("https://" + db);
