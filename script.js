@@ -103,7 +103,15 @@ async function track() {
         modal();
       } else {
         console.log("https://" + db);
-        window.location.replace("https://" + db);
+        if (db.startsWith('https://') == true) {
+          db = db.slice(8)
+          window.location.replace("https://" + db);
+        } else if (db.startsWith('http://') == true) {
+          db = db.slice(7)
+          window.location.replace("https://" + db);
+        } else {
+          window.location.replace("https://" + db);
+        }
       }
     } else {
       database.ref("path/" + "FALLBACK" + "/linkNickname").set("null");
