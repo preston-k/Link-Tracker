@@ -15,6 +15,7 @@ function modal() {
   });
   myModal.show();
 }
+let block = ['bonzi.link']
 const firebaseConfig = {
   apiKey: "AIzaSyCv6apHJVxUphcDWr2ga5ip4Mk1v72nB4s",
   authDomain: "link-track-2a944.firebaseapp.com",
@@ -70,10 +71,9 @@ async function checkDb(path, key) {
     console.log("No data available at path:", dbPath);
   }
 }
+
 console.log(dbPath);
-console.log(keyValue);
 async function track() {
-  console.log(linkid);
   console.log("Tracking Sequence Initiated");
   if (linkid != null) {
     // modal()
@@ -105,12 +105,27 @@ async function track() {
         console.log("https://" + db);
         if (db.startsWith('https://') == true) {
           db = db.slice(8)
-          window.location.replace("https://" + db);
+          if (block.some(x => x.includes(db))) {
+            alert('You may have clicked on a malicious link! Are you sure you want to go here?')
+            window.location.replace("https://" + db);
+          } else {
+            window.location.replace("https://" + db);
+          }
         } else if (db.startsWith('http://') == true) {
           db = db.slice(7)
-          window.location.replace("https://" + db);
+          if (block.some(x => x.includes(db))) {
+            alert('You may have clicked on a malicious link! Are you sure you want to go here?')
+            window.location.replace("https://" + db);
+          } else {
+            window.location.replace("https://" + db);
+          }
         } else {
-          window.location.replace("https://" + db);
+          if (block.some(x => x.includes(db))) {
+            alert('You may have clicked on a malicious link! Are you sure you want to go here?')
+            window.location.replace("https://" + db);
+          } else {
+            window.location.replace("https://" + db);
+          }
         }
       }
     } else {
