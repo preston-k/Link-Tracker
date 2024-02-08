@@ -17,7 +17,8 @@ function modal() {
   });
   myModal.show();
 }
-let block = ['bonzi.link', '17ebook.com', '17ebook.com', 'aladel.net', 'bpwhamburgorchardpark.org', 'clinicnews.com', 'dfwdiesel.net', 'divineenterprises.net', 'fantasticfilms.ru', 'gardensrestaurantandcatering.com', 'ginedis.com', 'gncr.org']
+let block = ['17ebook.com', 'aladel.net', 'bpwhamburgorchardpark.org', 'clicnews.com', 'dfwdiesel.net', 'divineenterprises.net', 'fantasticfilms.ru', 'gardensrestaurantandcatering.com', 'ginedis.com', 'gncr.org', 'hdvideoforums.org', 'hihanin.com', 'kingfamilyphotoalbum.com', 'likaraoke.com', 'mactep.org', 'magic4you.nu', 'marbling.pe.kr', 'nacjalneg.info', 'pronline.ru', 'purplehoodie.com', 'qsng.cn', 'seksburada.net', 'sportsmansclub.net', 'stock888.cn', 'tathli.com', 'teamclouds.com', 'texaswhitetailfever.com', 'wadefamilytree.org', 'xnescat.info', 'yt118.com'];
+
 const firebaseConfig = {
   apiKey: "AIzaSyCv6apHJVxUphcDWr2ga5ip4Mk1v72nB4s",
   authDomain: "link-track-2a944.firebaseapp.com",
