@@ -116,7 +116,7 @@ function generateQR() {
   ).innerHTML = `<img id='htmlqr' src='${qrImageUrl}' alt='QR Code'>`;
   document.getElementById(
     "uuidlinkdiv"
-  ).innerHTML = `<p>You can also share this URL: <a target='blank_' href='${urlid}'>${urlid}</a>.</p>`;
+  ).innerHTML = `<p>You can also share this URL: <a target='blank_' href='${urlid}'>${urlid}</a></p>`;
 }
 
 export {};
