@@ -14,10 +14,10 @@ function modal() {
   insidep.style.display = "none";
   let myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"), {
     keyboard: false,
-  });
-  myModal.show();
+  })
+  myModal.show()
 }
-let block = ['17ebook.com', 'aladel.net', 'bpwhamburgorchardpark.org', 'clicnews.com', 'dfwdiesel.net', 'divineenterprises.net', 'fantasticfilms.ru', 'gardensrestaurantandcatering.com', 'ginedis.com', 'gncr.org', 'hdvideoforums.org', 'hihanin.com', 'kingfamilyphotoalbum.com', 'likaraoke.com', 'mactep.org', 'magic4you.nu', 'marbling.pe.kr', 'nacjalneg.info', 'pronline.ru', 'purplehoodie.com', 'qsng.cn', 'seksburada.net', 'sportsmansclub.net', 'stock888.cn', 'tathli.com', 'teamclouds.com', 'texaswhitetailfever.com', 'wadefamilytree.org', 'xnescat.info', 'yt118.com'];
+let block = ['bonzi.link', '17ebook.com', 'aladel.net', 'bpwhamburgorchardpark.org', 'clicnews.com', 'dfwdiesel.net', 'divineenterprises.net', 'fantasticfilms.ru', 'gardensrestaurantandcatering.com', 'ginedis.com', 'gncr.org', 'hdvideoforums.org', 'hihanin.com', 'kingfamilyphotoalbum.com', 'likaraoke.com', 'mactep.org', 'magic4you.nu', 'marbling.pe.kr', 'nacjalneg.info', 'pronline.ru', 'purplehoodie.com', 'qsng.cn', 'seksburada.net', 'sportsmansclub.net', 'stock888.cn', 'tathli.com', 'teamclouds.com', 'texaswhitetailfever.com', 'wadefamilytree.org', 'xnescat.info', 'yt118.com']
 
 const firebaseConfig = {
   apiKey: "AIzaSyCv6apHJVxUphcDWr2ga5ip4Mk1v72nB4s",
@@ -111,7 +111,7 @@ async function track() {
         if (db.startsWith('https://') == true) {
           db = db.slice(8)
           if (block.some(x => db.includes(x))) {
-            alert('You may have clicked on a malicious link! Are you sure you want to go here?\n\nThis link will redirect you to: '+db)
+            alert('You may have clicked on a malicious link! Are you sure you want to go here?\n\nThis link will redirect you to: '+db+'\n\nIf you do not want to proceed, reload this page.')
             window.location.replace("https://" + db);
           } else {
             window.location.replace("https://" + db);
@@ -119,14 +119,14 @@ async function track() {
         } else if (db.startsWith('http://') == true) {
           db = db.slice(7)
           if (block.some(x => db.includes(x))) {
-            alert('You may have clicked on a malicious link! Are you sure you want to go here?\n\nThis link will redirect you to: '+db)
+            alert('You may have clicked on a malicious link! Are you sure you want to go here?\n\nThis link will redirect you to: '+db+'\n\nIf you do not want to proceed, reload this page.')
             window.location.replace("https://" + db);
           } else {
             window.location.replace("https://" + db);
           }
         } else {
           if (block.some(x => db.includes(x))) {
-            alert('You may have clicked on a malicious link! Are you sure you want to go here?\n\nThis link will redirect you to: '+db)
+            alert('You may have clicked on a malicious link! Are you sure you want to go here?\n\nThis link will redirect you to: '+db+'\n\nIf you do not want to proceed, reload this page.')
             window.location.replace("https://" + db);
           } else {
             window.location.replace("https://" + db);
