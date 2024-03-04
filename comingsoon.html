@@ -7,6 +7,7 @@
   <title>Coming Soon!</title>
   <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Poppins">
+  <link rel="icon" href="https://cdn.prestonkwei.com/personalwebsitefavicon.PNG">
 </head>
 <style>
   body {
@@ -15,15 +16,46 @@
     color: white;
     text-align: center;
   }
+  h1 {
+    font-size: 50px;
+    line-height: 30px;
+  }
+  #emailcollector {
+    width: 50%;
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    font-family: 'Poppins';
+    text-align: center;
+    font-size: 24px;
+  }
+  #emailbutton {
+    width: 10%;
+    height: 30px;
+    margin: 5px;
+    background-color: black;
+    border: 2px solid white;
+    cursor: pointer;
+    color: white;
+    font-family: 'Poppins';
+  }
+  #dotdotdot {
+    font-family: 'Poppins';
+    font-size: 50px;
+    line-height: 0;
+  }
 </style>
 <body>
-  <h1>Coming Soon...</h1>
+  <h1><u>Coming Soon...</u></h1>
   <h3>There's nothing here yet, but we're working on it!</h3>
-
+  <h1 id='dotdotdot'>⋅  ⋅  ⋅</h1>
   <h4>Want to be notified when we update this page?</h4>
   <form>
-    <input id='emailcollector' type='email'></input>
-    <input type='submit'></input>
+    <input id='emailcollector' placeholder='Email' type='email' disabled></input>
+    <br>
+    <input id='emailbutton' type='submit'></input>
   </form>
   </form>
 </body>
