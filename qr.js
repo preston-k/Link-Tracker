@@ -2,7 +2,7 @@
 const data = await fetch("/static.json").then((x) => x.json());
 
 let version = data.version;
-import firebaseConfig from './firebaseconfig.js'
+import firebaseConfig from './firebase.js'
 firebase.initializeApp(firebaseConfig);
 
 let database = firebase.database();
