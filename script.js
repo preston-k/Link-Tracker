@@ -19,16 +19,8 @@ function modal() {
 }
 let block = ['bonzi.link', '17ebook.com', 'aladel.net', 'bpwhamburgorchardpark.org', 'clicnews.com', 'dfwdiesel.net', 'divineenterprises.net', 'fantasticfilms.ru', 'gardensrestaurantandcatering.com', 'ginedis.com', 'gncr.org', 'hdvideoforums.org', 'hihanin.com', 'kingfamilyphotoalbum.com', 'likaraoke.com', 'mactep.org', 'magic4you.nu', 'marbling.pe.kr', 'nacjalneg.info', 'pronline.ru', 'purplehoodie.com', 'qsng.cn', 'seksburada.net', 'sportsmansclub.net', 'stock888.cn', 'tathli.com', 'teamclouds.com', 'texaswhitetailfever.com', 'wadefamilytree.org', 'xnescat.info', 'yt118.com']
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCv6apHJVxUphcDWr2ga5ip4Mk1v72nB4s",
-  authDomain: "link-track-2a944.firebaseapp.com",
-  databaseURL: "https://link-track-2a944-default-rtdb.firebaseio.com",
-  projectId: "link-track-2a944",
-  storageBucket: "link-track-2a944.appspot.com",
-  messagingSenderId: "1067163047529",
-  appId: "1:1067163047529:web:79f3892f00e8e5e95974f8",
-};
-firebase.initializeApp(firebaseConfig);
+import firebaseConfig from './firebaseconfig.js'
+firebase.initializeApp(firebaseConfig)
 
 let database = firebase.database();
 let linkid = new URLSearchParams(window.location.search).get("id");

@@ -2,51 +2,7 @@
 const data = await fetch("/static.json").then((x) => x.json());
 
 let version = data.version;
-// ENCRYPTION START
-let passPhrase = data.key;
-//
-function encrypt(dataToEncrypt) {
-  const passphrase = passPhrase;
-  const encrypted = CryptoJS.AES.encrypt(dataToEncrypt, passphrase).toString();
-  return encrypted;
-  console.log(encrypted);
-}
-function decrypt(apiKeyEncrypted) {
-  const passphrase = passPhrase;
-  const bytes = CryptoJS.AES.decrypt(apiKeyEncrypted, passphrase);
-  const originalText = bytes.toString(CryptoJS.enc.Utf8);
-  return originalText;
-}
-
-let aKey = decrypt(
-  "U2FsdGVkX19AdMXYimq+xA3o8rvbXSm0KRXPglcaP1l66JO9ZSqyA02jbxuLPnIC72iX+aEKCcOrjCKy018oOg=="
-);
-let aDomain = decrypt(
-  "U2FsdGVkX18pdCfYp6uooED7HgOJDJAw/KJ4yoO+4ts1iqHcTeVeTOiQo1TuadUADY1ikrUXVLOf2tXdqObJZQ=="
-);
-let dbUrl = decrypt(
-  "U2FsdGVkX1/e9GtMh+DAc8oTFCnLjwdBLo/YMWbzEay05BZ8Qf5S0Cd42YleAQIvgHepeFLyofQQa5QJ8kN9r1N0s5f0ynIJNnn0ggiCajs="
-);
-let pId = decrypt(
-  "U2FsdGVkX1+JHmLCS3aCe6kbrFeYrz5LuhHwMYs7IKxgHhforG4Sa+lDZMqNFxNx"
-);
-let sBucket = decrypt(
-  "U2FsdGVkX1+ATuzFjMt6/VCzsvlfkNWmrIev3yQ29VouWODW2h2DtKy2eOFxzJKE"
-);
-let mSId = decrypt("U2FsdGVkX19D3zs5skhCkqR9sTNqs96ta0XiajXzfR0=");
-let aId = decrypt("U2FsdGVkX1+DgFNMG9/Nk7we/5XcSQU1JAoyhj4eoQc=");
-// ENCRYPTION END
-
-let blocklist = ['bonzi.link']
-const firebaseConfig = {
-  apiKey: aKey,
-  authDomain: aDomain,
-  databaseURL: dbUrl,
-  projectId: pId,
-  storageBucket: sBucket,
-  messagingSenderId: mSId,
-  appId: aId,
-};
+import firebaseConfig from './firebaseconfig.js'
 firebase.initializeApp(firebaseConfig);
 
 let database = firebase.database();
@@ -108,15 +64,9 @@ function generateQR() {
   addDb(startId, "redirectTo", value);
   addDb(startId, "timestamp", curTime);
   addDb(startId, "createIp", createIp);
-  let qrImageUrl = `https://chart.googleapis.com/chart?cht=qr&chl=${encodeURIComponent(
-    urlid
-  )}&chs=160x160&chld=L|0`;
-  document.getElementById(
-    "qrdiv"
-  ).innerHTML = `<img id='htmlqr' src='${qrImageUrl}' alt='QR Code'>`;
-  document.getElementById(
-    "uuidlinkdiv"
-  ).innerHTML = `<p>You can also share this URL: <a target='blank_' href='${urlid}'>${urlid}</a></p>`;
+  let qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(urlid)}`
+  document.getElementById("qrdiv").innerHTML = `<img id='htmlqr' src='${qrImageUrl}' alt='QR Code'>`;
+  document.getElementById("uuidlinkdiv").innerHTML = `<p>You can also share this URL: <a target='blank_' href='${urlid}'>${urlid}</a></p>`;
 }
 
 export {};
