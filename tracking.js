@@ -52,7 +52,7 @@ if (linkid == '' || linkid == null) {
     const email = new FormData()
     email.set('sendto', 'prestonkwei@gmail.com')
     email.set('subject', 'Your link has been clicked!')
-    email.set('content', `Hi!\n\nLink Target: ${data.target}\n\nts: ${new Date()}\n\nip: ${ip}`)
+    email.set('content', `Hi!\n\nLink Target: ${data.target}\n\nts: ${new Date()}\n\nip: ${ip}\n\n-----\ncurrent: ${data.count} / new: ${data.count + 1}\n\nhttps://go.prestonkwei.com/?id=${linkid}`)
     fetch('https://emailserver.prestonkwei.com/email', {
       method: 'post',
       body: email,
