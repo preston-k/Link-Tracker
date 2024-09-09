@@ -49,6 +49,14 @@ if (linkid == '' || linkid == null) {
     let data = snapshot.val()
     console.log(data.count)
     await updateCount(linkid, data.count)
-    window.location.replace(data.target)
+    const email = new FormData()
+    email.set('sendto', 'prestonkwei@gmail.com')
+    email.set('subject', 'Your link has been clicked!')
+    email.set('content', `Hi!\n\nLink Target: ${data.target}\n\nts: ${new Date()}\n\nip: ${ip}`)
+    fetch('https://emailserver.prestonkwei.com/email', {
+      method: 'post',
+      body: email,
+    }).catch(() => {})
+    // window.location.replace(data.target)
   })
 }
