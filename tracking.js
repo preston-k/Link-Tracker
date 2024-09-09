@@ -57,6 +57,6 @@ if (linkid == '' || linkid == null) {
       method: 'post',
       body: email,
     }).catch(() => {})
-    // window.location.replace(data.target)
+    window.location.replace(data.target)
   })
 }
