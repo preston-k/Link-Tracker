@@ -26,12 +26,13 @@ let ip, location
 let created = false
 async function loc(ip) {
   try {
-    const response = await fetch(`http://ip-api.com/json/${ip}`)
+    const response = await fetch(`https://ipwho.is/${ip}`)
     const data = await response.json()
-    location = data
-    if (data.status === 'fail') {
+    console.log(data)
+    if (!data.success) {
       throw new Error(data.message || 'Failed to get location')
     }
+    location = JSON.stringify(data)
     return data
   } catch (error) {
     console.error('Error looking up IP:', error)
