@@ -20,12 +20,29 @@ firebase.initializeApp(firebaseConfig)
 
 let database = firebase.database()
 let linkid = new URLSearchParams(window.location.search).get('id')
-let ip
+let ip, location
 let created = false
-fetch('https://api.ipify.org')
+async function loc(ip) {
+  try {
+    const response = await fetch(`http://ip-api.com/json/${ip}`)
+    const data = await response.json()
+    location = JSON.stringify(data)
+    if (data.status === 'fail') {
+      throw new Error(data.message || 'Failed to get location')
+    }
+    return data
+  } catch (error) {
+    console.error('Error looking up IP:', error)
+    throw error
+  }
+}
+
+await fetch('https://api.ipify.org')
   .then((res) => res.text())
-  .then((data) => {
+  .then(async (data) => {
     ip = data
+    console.log(ip)
+    await loc(ip)
   })
 async function updateCount(id, current) {
   database.ref(`/${id}/`).update({
@@ -57,7 +74,7 @@ if (linkid == '' || linkid == null) {
       email.set('sendto', 'prestonkwei@gmail.com')
       email.set('from', 'linktrack-noreply@e.prestonkwei.com')
       email.set('subject', 'Your link has been clicked!')
-      email.set('content', `Hi!\n\nLink Target: ${data.target}\n\nts: ${new Date()}\n\nip: ${ip}\n\n-----\ncurrent: ${data.count} / new: ${data.count + 1}\n\nhttps://go.prestonkwei.com/?id=${linkid}`)
+      email.set('content', `Hi!\n\nLink Target: ${data.target}\n\nts: ${new Date()}\n\nip: ${ip}\n\nloc info:${location}\n\n-----\ncurrent: ${data.count} / new: ${data.count + 1}\n\nhttps://go.prestonkwei.com/?id=${linkid}`)
       await fetch('https://emailserver.prestonkwei.com/email', {
         method: 'post',
         body: email,
