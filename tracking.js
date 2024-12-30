@@ -17,14 +17,16 @@ function modal() {
 }
 import firebaseConfig from './firebase.js'
 firebase.initializeApp(firebaseConfig)
-
+function error() {
+  console.log('Error')
+}
 let database = firebase.database()
 let linkid = new URLSearchParams(window.location.search).get('id')
 let ip, location
 let created = false
 async function loc(ip) {
   try {
-    const response = await fetch(`https://ip-api.com/json/${ip}`)
+    const response = await fetch(`http://ip-api.com/json/${ip}`)
     const data = await response.json()
     location = data
     if (data.status === 'fail') {
