@@ -143,7 +143,7 @@ if (linkid == '' || linkid == null) {
           <tr>
             <td style='font-size: 14px; line-height: 1; border: 1px solid black; border-left: 0 solid black; border-right: 0 solid black; margin: 0 10px;'>
               <p><span style='font-weight: 800;'>past:</span> ${data.count} / <span style='font-weight: 800;'>new:</span> ${data.count + 1}</p>
-              <p>Aa -><a href='https://go.prestonkwei.com/?id=${linkid}'>/go.prestonkwei.com/?id=${linkid}</a></p>
+              <p><span style='font-weight: 800;'>Aa -></span><a href='https://go.prestonkwei.com/?id=${linkid}'>go.prestonkwei.com/?id=${linkid}</a></p>
             </td>
           </tr>
           <tr>
