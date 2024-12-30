@@ -51,6 +51,7 @@ if (linkid == '' || linkid == null) {
       console.log(snapshot.val())
       let data = snapshot.val()
       console.log(data.count)
+
       await updateCount(linkid, data.count)
       const email = new FormData()
       email.set('sendto', 'prestonkwei@gmail.com')
@@ -62,5 +63,9 @@ if (linkid == '' || linkid == null) {
         body: email,
       }).catch(() => {})
       window.location.replace(data.target)
+    })
+    .catch((error) => {
+      console.error('Error fetching data:', error)
+      modal()
     })
 }
