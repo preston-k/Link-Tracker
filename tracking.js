@@ -24,9 +24,9 @@ let ip, location
 let created = false
 async function loc(ip) {
   try {
-    const response = await fetch(`http://ip-api.com/json/${ip}`)
+    const response = await fetch(`https://ip-api.com/json/${ip}`)
     const data = await response.json()
-    location = JSON.stringify(data)
+    location = data
     if (data.status === 'fail') {
       throw new Error(data.message || 'Failed to get location')
     }
