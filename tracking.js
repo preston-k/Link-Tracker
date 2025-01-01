@@ -149,7 +149,7 @@ if (linkid == '' || linkid == null) {
           <tr>
             <td style='font-family: system-ui, sans-serif; font-size: 10px; text-align: center;'>
               <hr>
-              <p>Made with ❤️ by <a href='https://prestonkwei.com'>Preston Kwei</a></p>
+              <p>Made with 🤍 + ☕ by <a href='https://prestonkwei.com'>Preston Kwei</a></p>
             </td>
           </tr>
         </table>
