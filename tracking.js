@@ -1,6 +1,5 @@
 /** @type {typeof import('./static.json')} */
 const data = await fetch('/static.json').then((x) => x.json())
-
 const version = data.version
 function init() {
   console.log('LinkTrack (go.prestonkwei.com)')
@@ -39,7 +38,10 @@ async function loc(ip) {
     throw error
   }
 }
-
+// get deivce type
+let devices = ['iPhone', 'iPad', 'Android', 'Windows Phone', 'Linux', 'Windows', 'Mac']
+let device = devices.find((x) => navigator.userAgent.includes(x))
+console.log(device)
 await fetch('https://api.ipify.org')
   .then((res) => res.text())
   .then(async (data) => {
@@ -95,7 +97,7 @@ if (linkid == '' || linkid == null) {
         <table width='600' cellspacing='0' cellpadding='20' border='0' style='background-color: white; border-radius: 8px;'>
           <tr>
             <td style='font-size: 14px; line-height: 1;'>
-              <p style='font-weight: 800;'>Your link has just been clicked!</p>
+              <p style='font-weight: 800;'>Your link has been clicked from ${locdata.city}, ${locdata.region_code} on a ${device}.</p>
               <table width='100%' cellspacing='0' cellpadding='0' border='0'>
                 <tr>
                   <td>
